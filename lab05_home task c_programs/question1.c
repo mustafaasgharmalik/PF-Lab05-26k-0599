@@ -1,22 +1,11 @@
-/*
- * Course: CL1002 - Programming Fundamentals
- * Lab 05 Home Tasks - Question 1: Smart Home Security Controller
- * Description: Manages four security devices using bitwise operations stored inside
- *              a single integer variable. Demonstrates switch, nested switch,
- *              bitwise operators (&, |, ^, ~, <<, >>), logical operators,
- *              and conditional operators without loops.
- */
-
 #include <stdio.h>
-
-// Bit definitions for security devices using left-shift operators
 #define DOOR_LOCK     (1 << 0) // Bit value 1
 #define ALARM_SYSTEM  (1 << 1) // Bit value 2
 #define CCTV_CAMERA   (1 << 2) // Bit value 4
 #define MOTION_SENSOR (1 << 3) // Bit value 8
 
 int main(void) {
-    int status = 0; // Single integer maintaining status of all four devices
+    int status = 0;
     int operationChoice = 0;
     int deviceChoice = 0;
     int modeChoice = 0;
@@ -31,7 +20,6 @@ int main(void) {
         return 1;
     }
 
-    // Mask to ensure only the 4 lower bits are considered
     status = status & 0x0F;
 
     printf("\nAvailable Operations:\n");
@@ -47,9 +35,9 @@ int main(void) {
         return 1;
     }
 
-    // Main switch statement to process the selected operation
+
     switch (operationChoice) {
-        case 1: // Activate a device
+        case 1:
             printf("\nSelect device to activate:\n");
             printf("1. Main Door Lock (Bit 1)\n");
             printf("2. Alarm System (Bit 2)\n");
@@ -58,7 +46,6 @@ int main(void) {
             printf("Enter device choice (1-4): ");
             scanf("%d", &deviceChoice);
 
-            // Nested switch statement to select specific device
             switch (deviceChoice) {
                 case 1:
                     status |= DOOR_LOCK;
